@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block section %}/{% endblock %}
+{% block title %}Коллективный разум{% endblock%}
+{%block content%}
+<div class="card">
+    <div class="card-body">
+        <p class="card-text">&nbsp;</p>
+        {% if paragraph.text == "" %}
+        <p class="card-text">Вам достался пустой текст, начните его писать...</p>
+        {% else %}
+        <p class="card-text">{{ paragraph.text }}</p>
+        <p class="card-text">{{ paragraph.author }}</p>
+        {% endif %}
+        <p class="card-text">&nbsp;</p>
+    </div>
+</div>
+<p></p>
+<h5>Предложить рассказ:</h5>
+
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Ваше имя:</label>
+        <input class="form-control" type="text" name="username" value="{{ poem.username }}"/>
+        <label for="exampleFormControlTextarea1">Название:</label>
+        <input class="form-control" type="text" name="title" value="{{ poem.title }}"/>
+        <label for="exampleFormControlTextarea1">Текст продолжения:</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows=3 name="text"></textarea>
+        <input type="hidden" name="id" value="{{ poem.id }}"/>
+    </div>
+
+    <input type="submit" name="button" value="добавить" class="btn btn-primary"/>
+    <input type="submit" name="button" value="записать" class="btn btn-secondary"/>
+</form>
+<p></p>
+{% endblock %}

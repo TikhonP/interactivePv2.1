@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block section %}/read/{% endblock %}
+{% block title %}Читать рассказы{%endblock%}
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Случайный рассказ</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ poem.title }}</h6>
+        {% for paragraph in paragraphs %}
+        <p class="card-text">{{ paragraph.text }}</p>
+        <h7 class="card-subtitle mb-2 text-muted">{{ paragraph.author }}</h7>
+        <p></p>
+        {% endfor %}
+    </div>
+
+</div
+    <p></p>
+<div class="card">
+    <div class="card-body">
+        {% for poem in poems %}
+        <a href="?poem={{ poem.id }}" class="card-link">{{ poem.title }}</a>
+        <p></p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
